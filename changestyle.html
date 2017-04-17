@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>changestyle</title>
+	<style>
+		#wrap{
+			margin:20px auto;
+			width:800px;
+			text-align:center;
+		}
+		.box{
+			width:200px;
+			height:200px;
+			background:red;
+			margin:10px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<input type="button" value="变宽">
+		<input type="button" value="变高">
+		<input type="button" value="变色">
+		<input type="button" value="隐藏">
+		<input type="button" value="重置">
+		<div class="box"></div>
+	</div>
+	
+	<script>
+		var box = document.getElementsByClassName("box")[0];
+		var inputs = document.getElementsByTagName("input");
+		/*设置属性*/
+		var styles = ["width","height","background","display","display"];
+		/*设置属性值*/
+		var values = ["300px","300px","violet","none","block"];
+		/*把元素的属性赋予的属性值封装成函数*/
+		var styleChange = function (eles,attr,value){
+			/*什么元素具有什么属性，然后具有什么属性值*/
+			eles.style[attr] = value;
+		}
+		/*遍历按钮*/
+		for(var i=0;i<inputs.length;i++){
+			/*赋索引值*/
+			inputs[i].index=i;
+			inputs[i].onclick = function(){
+				/*只有当索引值为最后一个时，后者生效，样式清空  注：&&取假*/
+				this.index ==inputs.length-1 && (box.style.cssText= "");
+				/*调用函数，当前值*/
+				styleChange(box,styles[this.index],values[this.index]);
+			}
+		}
+		
+		
+	</script>
+</body>
+</html>
