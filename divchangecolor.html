@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>divchangecolor</title>
+	<style>
+		#outer{width:330px;height:100px;margin:10px auto;}
+		#outer div{float:left;width:100px;height:100px;margin:0 5px;background:aqua;}
+		
+		body{color:lightblue;font:12px/1.5 Tahoma;}
+		#div1{width:150px;height:150px;margin:0 auto;padding:10px;background:black;border:10px solid #000;cursor:crosshair;}
+		#div1.hover{color:red;background:#f0f0f0;border:10px solid red;}
+		#login .tips{display:none;}
+	</style>
+
+</head>
+<body>
+	<center><button>点击将DIV变成红色</button></center>
+		<div id="outer">
+    		<div></div>
+    		<div></div>
+    		<div></div>
+		</div>
+		
+		
+		
+		
+		<div id="div1">鼠标移入改变样式，鼠标移出恢复。</div>
+		
+		<div id="login">
+			<label><input type="checkbox" name="" id="">两周内自动登录</label>
+			<div class="tips">为了您的信息安全，请不要在网吧或公用电脑上使用此功能！</div>
+		</div>
+
+	<script>
+		var outer = document.querySelector("#outer");
+		var divs = outer.getElementsByTagName("div");
+		var btn = document.getElementsByTagName("button")[0];
+		var div1 = document.getElementById("div1");
+		
+		/*点击事件*/
+		btn.onclick = function(){
+			
+			for(var i=0;i<divs.length;i++){
+				divs[i].style.background="gold";
+			}
+			alert(0);
+		}
+		
+		/*鼠标划入事件*/
+		div1.onmouseover = function(){
+			div1.className = "hover";
+		}
+		div1.onmouseleave = function(){
+			div1.className = "";
+		}
+		
+		var tips = document.getElementById("login").getElementsByClassName("tips")[0];
+		var label = document.getElementsByTagName("label")[0];
+		label.onmouseover = function(){
+			tips.style.display="block"
+		}
+		label.onmouseout = function(){
+			tips.style.display="none"
+		}
+	</script>
+</body>
+</html>

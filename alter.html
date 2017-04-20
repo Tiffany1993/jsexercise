@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>alert</title>
+</head>
+<body>
+	<div class="box">
+		<p><input type="text" name="" id=""></p>
+		<p><input type="text" name="" id=""></p>
+		<p><button>传参</button></p>
+		
+	</div>
+	
+	<script>
+		var inputs = document.getElementsByTagName("input");
+		var btn = document.getElementsByTagName("button")[0];
+		
+		var attrValue = function(a,b){
+			alert(a.value);
+			alert(b.value);
+		}
+		btn.onclick = function(){
+			attrValue(inputs[0],inputs[1])
+		}
+		
+	</script>
+</body>
+</html>
