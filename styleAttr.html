@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>styleAttr</title>
+	<style>
+		#box{
+			width:500px;
+			margin:0 auto;
+			border:4px dashed #ccc;
+			text-align:Center;
+			padding-top:20px;
+			height:400px;
+		}
+		#box label{
+			margin-top:20px;
+		}
+		#box p button{
+			margin-left:10px;
+		}
+		#box .box{
+			width:260px;
+			height:260px;
+			background:#000;
+			margin:0 auto;
+			text-align:left;
+			line-height:30px;
+			color:#fff;
+			padding-left:10px;
+			padding-right:10px;
+			padding-top:20px;
+		}
+		#img{
+			margin:0 auto;
+			border:2px solid #666;
+			width:1400px;
+			margin-top:20px;
+			padding:10px;
+		}
+		#img #ul li{
+			list-style:none;
+			width:300px;
+			height:190px;
+			float:left;
+			margin:5px;
+			padding:10px;
+			border:1px solid grey;
+		}
+		#img #ul li img{
+			width:100%;
+			height:100%;
+			opacity:.3;
+			cursor:crosshair;
+/*			filter:alpha(opacity=30);*/
+		}
+		#img .clear{
+			clear:both;
+		}
+		#img #ul .now img{
+			opacity:1;
+/*			filter:alpha(opacity=100);*/
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<label for="">属性名：<input type="text"></label><br>
+		<label for="">属性值：<input type="text"></label>
+		<p><button id="sure">确定</button><button id="reset">重置</button></p>
+		<div class="box">
+			在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果
+		</div>
+	</div>
+	
+	<div id="img">
+		<ul id="ul">
+			<li><img src="images/America.jpg" alt=""></li>
+			<li><img src="images/Italy.jpg" alt=""></li>
+			<li><img src="images/Germany.jpg" alt=""></li>
+			<li><img src="images/France.jpg" alt=""></li>
+			<li><img src="images/England.jpg" alt=""></li>
+			<li><img src="images/holland.jpg" alt=""></li>
+			<li><img src="images/Argentina.jpg" alt=""></li>
+			<li><img src="images/Switzerland.jpg" alt=""></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<script>
+		/*元素赋予什么属性，属性赋予什么值封装成函数*/
+		var change = function(ele,attr,value){
+			ele.style[attr]=value
+		}
+		var inputs = document.getElementsByTagName("input");
+		var sure = document.getElementById("sure");
+		var reset = document.getElementById("reset");
+		var box = document.getElementsByClassName("box")[0];
+		/*点击“确定”把属性和属性值赋予该元素*/
+		sure.onclick = function(){
+			change(box,inputs[0].value,inputs[1].value);
+		}
+		/*“重置”时把添加的样式清空*/
+		reset.onclick = function(){
+			box.removeAttribute("style");
+		}
+		/*划过图片*/
+		var lis = document.getElementById("ul").getElementsByTagName("li");
+		for(var i=0;i<lis.length;i++){
+			/*滑过时添加class名*/
+			lis[i].onmouseover = function(){
+				this.className="now";
+			}
+			/*划出时清除class名*/
+			lis[i].onmouseout = function(){
+				this.className="";
+			}
+		}
+	</script>
+</body>
+</html>
