@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<style>
+		*{
+			font-family:"Microsoft Yahei";
+			margin: 0;padding: 0;
+		}
+		#box{
+			width:600px;
+			margin:0 auto;
+			border:4px dashed #eee;
+		}
+		#box #title{
+			text-align:center;
+			display:flex;
+			background:lightgreen;
+		}
+		#box #title span{
+			flex:1;
+			height:50px;
+			line-height:50px;
+			font-size:20px;
+		}
+		#box #title span.sty{
+			background:orange;
+			color:wheat;
+		}
+		#box #content ul{
+			display:none;
+			padding-left:30px;
+		}
+		#box #content ul li{
+			height:30px;
+			line-height:30px;
+		}
+		#box #content .current{
+			display: block !important;
+		}
+		#calendar{
+			width:300px;
+			overflow:hidden;
+			background:#eaeaea;
+			margin:10px auto;
+			padding:30px;
+		}
+		#calendar ul{
+			overflow:hidden;
+			
+		}
+		#calendar li{
+			color:#fff;
+			float:left;
+			width:40px;height:40px;
+			cursor:pointer;
+			font-size:14px;
+			text-align:center;
+			background:#424242;
+			line-height:1.3;
+			list-style-type:none;
+			border:1px solid #424242;
+			margin:10px 10px 0 0;
+			padding:5px;
+		}
+		#calendar li.current{
+			color:#F69;
+			background:#fff;
+		}
+		#calendar li strong{
+			display:block;
+			font-size:18px;
+		}
+		#msg{
+			color:#666;
+			background:#f1f1f1;
+			border:1px solid #fff;
+			margin:20px 10px 0 0;
+			padding:5px;
+		}
+		#msg h2{
+			font-size:14px;
+		}
+		#list ul{
+			list-style:none;
+		}
+		#list{
+			width:300px;
+			border:1px solid #aaa;
+			margin:10px auto;
+		}
+		#list h2{
+			cursor:pointer;
+			color:#57646E;
+			font-size:18px;
+			font-weight:400;
+			border:1px solid;
+			height:40px;
+			line-height:40px;
+			padding-left:10px;
+			background:#ced3d7;
+			border-color:#fff #e9edf2;
+			position:relative;
+		}
+		#list h2.a:after{
+			content:'';
+			width:0;
+			height:0;
+			border:9px solid transparent;
+			border-top-color:orange;
+			position:absolute;
+			right:10px;
+			top:16px;
+		}
+		#list h2.b:after{
+			content:'';
+			width:0;
+			height:0;
+			border:9px solid transparent;
+			border-bottom-color:violet;
+			position:absolute;
+			right:10px;
+			top:6px;
+		}
+		#list ul{
+			border-top:1px solid #DEE3E6;
+		}
+		#list li{
+			height:25px;
+			line-height:25px;
+			vertical-align:top;
+		}
+		#list a{
+			display:block;
+			color:#6b7980;
+			background:#e9edf2;
+			text-decoration:none;
+			padding:0 10px;}
+		#list a:hover{
+			background:#fff;
+			text-decoration:underline;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="title">
+			<span class="sty">第一课</span>
+			<span>第二课</span>
+			<span>第三课</span>
+		</div>
+		<div id="content">
+			<ul style="display:block">
+				<li>德国进口欧德堡超高温灭菌3.5%全脂纯牛奶 200ml*2</li>
+				<li>台湾进口膨化零食 张君雅小妹妹碳烤鸡汁点心面100g</li>
+				<li>Ballantine百龄坛苏格兰特醇威士忌500ml进口洋酒</li>
+				<li>日本进口森永Bake Creamy浓郁芝士小方38g 美妙超赞</li>
+				<li>欧丽薇兰 特级初榨橄榄油简装礼盒750ml*2 食用油</li>
+				<li>蜂花护发素1L含小麦蛋白改善毛躁滋润补水润发乳正品</li>
+				<li>力利惯性工程车 小型轿运双层拖车 2-6岁男孩玩具车</li>
+			</ul>
+			<ul>
+				<li>天堂伞3188E黑胶1-3人用加大加固太阳伞晴雨伞</li>
+				<li>老管家活性炭除湿盒230g*3盒衣橱吸湿驱潮干燥剂</li>
+				<li>小白熊bb煲宝宝辅食锅0627电炖锅婴儿电饭煲煮粥锅</li>
+				<li>金龙鱼 盘锦大米 蟹稻共生5kg 东北大米 人气爆款</li>
+				<li>萱宜阁夏季居家亚麻拖鞋女男士情侣厚底防滑凉拖鞋</li>
+				<li>洁丽雅纯棉素色条纹面巾柔软吸水亲肤4条组合装毛巾</li>
+				<li>港荣蒸蛋糕1kg手撕紫米面包整箱早餐零食点心小吃</li>
+				<li>四川优选黄柠檬2个 新鲜水果</li>
+				<li>统一 汤达人日式豚骨拉面 125g*5袋 方便面 豚骨面</li>
+				<li>雀巢成人奶粉 安骼高钙高铁女士成人奶粉400g无蔗糖</li>
+			</ul>
+			<ul>
+				<li>卫龙小面筋390g零食辣条辣片麻辣素食豆干制品大刀肉</li>
+				<li>雕牌洗衣皂/透明皂 102g*6块装 优惠组合装 肥皂</li>
+				<li>雷达杀虫气雾剂柑橘味 600ml/瓶 杀蚊子苍蝇蟑螂蚂蚁</li>
+				<li>如意 水磨年糕450g/袋 宁波慈城特产 方便煎炸零食#%</li>
+				<li>TCL L32F3301B 32英吋 超窄边平板蓝光 液晶电视</li>
+				<li>维达洁肤杀菌系列卫生湿巾10片装单包便携湿纸巾</li>
+				<li>稻草人钱包男真皮短款钱夹头层牛皮青年横款皮夹</li>
+				<li>大宝男士焕活保湿露50g 深层补水 不干燥 嫩白肌肤</li>
+				<li>碧丽珠家具护理 喷蜡 柠檬香型330ml 清洁保护</li>
+				<li>厦门特产古龙茄汁沙丁鱼罐头425g 下饭菜方便菜肴</li>
+			</ul>
+		</div>
+	</div>
+	
+	
+	<div id="calendar">
+    	<ul>
+        	<li><strong>1</strong>JAN</li>
+        	<li><strong>2</strong>FER</li>
+        	<li><strong>3</strong>MAR</li>
+        	<li><strong>4</strong>APR</li>
+        	<li><strong>5</strong>MAY</li>
+        	<li class="current"><strong>6</strong>JUN</li>
+        	<li><strong>7</strong>JUL</li>
+        	<li><strong>8</strong>AUG</li>
+        	<li><strong>9</strong>SEP</li>
+        	<li><strong>10</strong>OCT</li>
+        	<li><strong>11</strong>NOV</li>
+        	<li><strong>12</strong>DEC</li>
+    	</ul>
+    	<div id="msg">
+        	<h2>
+            	<strong>6</strong>
+            	月节日
+        	</h2>
+        	<p>端午节：6月4日至6日放假3天。</p>
+    	</div>
+	</div>
+
+	
+	
+	<div id="list">
+    	<h2 class="a">播放列表...</h2>
+    		<ul>
+        		<li><a href="javascript:;">天涯过客 - 周杰伦</a></li>
+        		<li><a href="javascript:;">爸爸妈妈 - 李荣浩</a></li>
+        		<li><a href="javascript:;">下雨的夜晚 - 吴青峰</a></li>
+        		<li><a href="javascript:;">十万嬉皮 - 万年青年旅店</a></li>
+        		<li><a href="javascript:;">一起走到 - 孙燕姿	</a></li>
+        		<li><a href="javascript:;">阴天快乐 - 陈奕迅</a></li>
+    		</ul>
+	</div>
+	<script>
+//		有bug
+//		var spans = document.getElementById("title").getElementsByTagName("span");
+//		var uls = document.getElementById("content").getElementsByTagName("ul");
+		/*for(var i=0;i<spans.length;i++){
+			spans[i].index=i
+			spans[i].onmouseover = function(){
+				uls[this.index].style.display="block";
+//				spans[this.index].className="sty";
+				for(var j=0;j<uls.length;j++){
+					uls[j].className="";
+//					spans[j].className="";
+				}
+		}
+			spans[i].onmouseout = function(){
+				uls[this.index].style.display="none";
+				uls[this.index].className="current"
+		}
+			
+	}*/
+		
+		
+		/*不好理解*/
+	var spans = document.getElementById("title").getElementsByTagName("span");
+	var uls = document.getElementById("content").getElementsByTagName("ul");
+	
+	for(var i = 0; i < spans.length; i++)
+	{
+		/*赋予每个导航下标*/
+		spans[i].index = i;
+		spans[i].onmouseover = function ()
+		{
+			for(var n = 0; n< spans.length; n++) {
+				spans[n].className="";
+				/*添加当前样式*/
+			}
+			this.className = "sty";
+			for(var n = 0; n < uls.length; n++) {
+				uls[n].style.display = "none";
+				/*显示当前列表*/	
+			}
+			uls[this.index].style.display = "block";
+		}	
+	}
+		
+		/*日历*/
+		var lis = document.getElementById("calendar").getElementsByTagName("li");
+		var strcon = document.getElementById("calendar").getElementsByTagName("strong");
+		var strongtitle = document.getElementById("msg").getElementsByTagName("strong")[0];
+		var pcontent = document.getElementById("msg").getElementsByTagName("p")[0];
+		var Array = [
+			"元旦：1月1日至3日放假三天。",
+			"春节：2月2日至8日放假7天。",
+			"妇女节：3月8日妇女节，与我无关。",
+			"清明节：4月3日至5日放假3天",
+			"劳动节：4月30日至5月2日放假3天。",
+			"端午节：6月4日至6日放假3天。",
+			"小暑：7月7日小暑。不放假。",
+			"七夕节：8月6日七夕节。不放假。",
+			"中秋节：9月10日至12日放假3天。",
+			"国庆节：10月1日至7日放假7天。",
+			"立冬：11月8日立冬。不放假。",
+			"艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+		];
+		/*遍历每个月份*/
+		for(var i=0;i<lis.length;i++){
+			/*获取下标*/
+			lis[i].index=i;
+			lis[i].onmouseover = function(){
+				for(var j=0;j<lis.length;j++){
+					lis[j].className="";
+					/*划过添加样式*/
+					lis[this.index].className="current";
+					/*获取月份*/
+					strongtitle .innerHTML = this.index+1;
+					/*获取该月份节日*/
+					pcontent.innerHTML = Array[this.index];
+				}
+			}
+		}
+		
+		/*歌曲列表*/
+		var htitle = document.getElementById("list").getElementsByTagName("h2")[0];
+		var uli = document.getElementById("list").getElementsByTagName("ul")[0];
+		
+		htitle.onclick = function(){
+			/*“=”赋值，“==”比较*/
+			uli.style.display =uli.style.display=="none"?"block":"none";
+			if(uli.style.display=="none"){
+				htitle.className="b";
+			}else{
+				htitle.className="a";
+			}
+		}
+	</script>
+</body>
+</html>
