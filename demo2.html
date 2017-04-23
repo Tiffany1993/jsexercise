@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slideout</title>
+	<style>
+		#discover{
+			width:700px;
+			border:1px solid #333;
+			margin:10px auto;
+			padding:0 0 10px 10px;
+		}
+		#discover h2{
+			line-height:30px;
+			text-align:center;
+			margin-top:10px;
+		}
+		#discover ul:after{
+			content:".";
+			display:block;
+			height:0;
+			clear:both;
+			visibility:hidden;
+		}
+		#discover ul{
+			list-style:none;
+		}
+		#discover ul li{
+			position:relative;
+			float:left;
+			border:1px solid #333;
+			margin:10px 10px 0 0;
+			display:inline;
+		}
+		#discover ul li img{
+			position:absolute;
+			top:-14px;left:-14px;
+			display:none;
+			border:2px solid #999;
+			cursor:crosshair;
+			width:200px;
+			height:120px;
+		}
+		#discover ul li a{
+			color:#666;
+			width:130px;
+			height:70px;
+			display:block;
+			background:#f0f0f0;
+			text-decoration:none;
+			padding:10px;
+		}
+		#discover ul li a strong{
+			display:block;
+		}
+		.zindex{
+			z-index:1;
+		}
+		#choose{
+			width:400px;
+			border:2px dashed #999;
+			padding:10px;
+			margin:10px auto;
+		}
+		#choose .left{
+			width:200px;
+/*			background:#999;*/
+			float:left;
+			text-align:center;
+			padding-top:60px;
+			padding-bottom:60px;
+			margin-top:20px;
+			border-right:2px solid green;
+		}
+		#choose .left a{
+			display:block;
+			height:70px;
+			line-height:70px;
+			color:#f76517;
+			text-decoration:none;
+			font-weight:bold;
+		}
+		#choose .right{
+			float:left;
+		}
+		#choose .right ul li{
+/*			float:left;*/
+			list-style:none;
+			height:30px;
+			line-height:30px;
+		}
+		#choose .clear{
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<div id="discover">
+    	<h2>各国国旗</h2>
+    	<ul>
+        	<li>
+            	<a href="javascript:;" title="美国"><strong>American</strong>美国</a>
+            	<img src="images/America.jpg" alt="美国" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="意大利"><strong>Italy</strong> 意大利</a>
+            	<img src="images/Italy.jpg" alt="意大利" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="德国"><strong>Germany</strong> 德国</a>
+            	<img src="images/Germany.jpg" alt="德国" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="法国"><strong>France</strong>法国</a>
+            	<img src="images/France.jpg" alt="法国" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="英国"><strong>England</strong>英国</a>
+            	<img src="images/England.jpg" alt="英国" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="荷兰"><strong>Holland</strong>荷兰</a>
+            	<img src="images/Holland.jpg" alt="荷兰" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="阿根廷"><strong>Argentina</strong>阿根廷</a>
+            	<img src="images/Argentina.jpg" alt="阿根廷" />
+        	</li>
+        	<li>
+            	<a href="javascript:;" title="瑞典"><strong>Switzerland</strong> 瑞典</a>
+            	<img src="images/Switzerland.jpg" alt="瑞典" />
+        	</li>
+    	</ul>
+	</div>
+	
+	
+	
+	<div id="choose">
+		<div class="left">
+			<label for=""><input type="checkbox" name="" id="all">全选</label>
+			<a href="#" id="back">反选</a>
+		</div>
+		<div class="right">
+			<ul id="uls">
+				<li><input type="checkbox" name="" id="">哈佛大学</li>
+				<li><input type="checkbox" name="" id="">麻省理工学院</li>
+				<li><input type="checkbox" name="" id="">哥伦比亚大学</li>
+				<li><input type="checkbox" name="" id="">剑桥大学</li>
+				<li><input type="checkbox" name="" id="">牛津大学</li>
+				<li><input type="checkbox" name="" id="">斯坦福大学</li>
+				<li><input type="checkbox" name="" id="">耶鲁大学</li>
+			</ul>
+			
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+	<script>
+		/*划过显示国旗*/
+		var lis = document.getElementById("discover").getElementsByTagName("li");
+		var acon = document.getElementsByTagName("a");
+		var imgs = document.getElementsByTagName("img");
+		for (var i = 0; i < lis.length; i++){
+			/*遍历li给a标签和imgs标签添加下脚标*/
+			acon[i].index = imgs[i].index = i;
+			acon[i].onmouseover = function() {
+				lis[this.index].className = "zindex";
+				imgs[this.index].style.display = "block"
+			};
+			/*划过显示隐藏*/
+			acon[i].onmouseout = function (){
+				lis[this.index].className = "";
+				imgs[this.index].style.display = "none"
+			};
+				imgs[i].onmouseover = function(){
+				lis[this.index].className = "zindex";
+				this.style.display = "block"	
+			};
+			imgs[i].onmouseout = function(){
+				lis[this.index].className = "";
+				this.style.display = "none"	
+			}		
+		}	
+		
+		/*全选*/
+		
+		var all = document.getElementById("all");
+		var inp = document.getElementById("uls").getElementsByTagName("input");
+		var back = document.getElementById("back");
+		
+		/*全选*/
+			all.onclick = function (){
+				var num = this.checked;	/*选中状态时*/
+			for (var i = 0; i < inp.length; i++){
+				inp[i].checked = num;//都全选或都不全选			
+			}
+		};
+		/*反选*/
+		back.onclick = function (){
+			for (var i = 0; i <inp.length; i++){
+			inp[i].checked = !inp[i].checked
+			}
+		}
+		
+	</script>
+</body>
+</html>
