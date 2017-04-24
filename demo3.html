@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo3</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#calc{
+			width:600px;
+			margin:0 auto;
+			margin-top:20px;
+			text-align:center;
+			border:4px dashed #eee;
+			padding:5px;
+		}
+		#calc p{
+			font-size:20px;
+			font-weight:900;
+		}
+		#calc .num{
+			height:30px;
+			line-height:30px;
+			font-size:20px
+		}
+		#accu{
+			width:200px;
+			text-align:center;
+			margin:0 auto;
+			margin-top:30px;
+			border:3px solid #999;
+			padding:10px;
+		}
+		#accu #btn{
+			width:70px;
+			height:30px;
+		}
+		#compare{
+			width:400px;
+			margin:0 auto;
+			margin-top:30px;
+			text-align:center;
+			border:3px dashed grey;
+			padding:20px;
+		}
+		#compare p{
+			font-size:20px;
+			font-weight:900;
+		}
+		#compare .nums{
+			width:70px;
+			height:30px;
+			font-size:20px;
+		}
+		#bodies{
+			width:300px;
+			margin:0 auto;
+			margin-top:30px;
+			text-align:center;
+			border:4px solid #ccc;
+			padding:10px;
+		}
+		#bodies p{
+			font-size:24px;
+			font-weight:bold;
+		}
+		#judgement{
+			width:300px;
+			border:4px dashed #919191;
+			margin:0 auto;
+			margin-top:20px;
+			text-align:center;
+			padding:10px;
+		}
+		#judgement p{
+			font-size:20px;
+			font-weight:bold;
+		}
+		#judgement input{
+			height:30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="calc">
+		<p>求和</p>
+		<input type="text" name="" class="num"> <strong>+</strong> <input type="text" name="" class="num"> <strong>=</strong> <span></span>
+		<input type="button" value="求和" class="btn">
+	</div>
+	
+	<div id="accu">
+		<p>累加</p>
+		<button id="btn">0</button>
+	</div>
+	
+	<div id="compare">
+		<p>比较大小</p>
+		<input type="text" name="" class="nums"> <strong>vs</strong> <input type="text" name="" class="nums"> <input type="button" value="最大的数是>"> <span></span>
+	</div>
+	
+	<div id="bodies">
+		<h2>页面加载累加</h2>
+		<p></p>
+	</div>
+	
+	<div id="judgement">
+		<p>判断位数</p>
+		<input type="text" name=""> <input type="button" value="是否为两位数">
+	</div>
+	<script>
+		//#clac求和
+		var calc = document.getElementById("calc");
+		var inp = calc.getElementsByTagName("input");
+		var spans = calc.getElementsByTagName("span")[0];
+		
+		for(var i=0;i<inp.length-1;i++){
+			inp[i].onkeyup = function(){
+				this.value=this.value.replace(/[^\d]/,"");
+			}
+		}
+		inp[2].onclick = function(){
+			if(inp[0].value=="" || inp[1].value==""){
+			alert("请输入数字")
+			}else{
+				spans.innerHTML = parseInt(inp[0].value)+parseInt(inp[1].value);
+			}
+		}
+		
+		//#accu累加
+		　var accubtn = document.getElementById("btn");
+		var num = 0;
+			accubtn.onclick = function (){
+				num++;
+				alert(num);
+				accubtn.innerHTML = num;
+			}
+			
+		//compare比较大小
+			var compare = document.getElementById("compare");
+			var inps = compare.getElementsByTagName("input");
+			var span = compare.getElementsByTagName("span")[0];
+		
+			for(var i=0;i<inps.length-1;i++){
+				inps[i].onkeyup = function(){
+					this.value=this.value.replace(/[^\d]/,"");
+				}
+			}
+			inps[2].onclick = function(){
+				if(inps[0].value=="" || inps[1].value==""){
+					alert("请输入数字")
+				}else{
+					span.innerHTML = Math.max(inps[0].value,inps[1].value)
+				}
+			}
+			
+			//body
+			var oBody = document.getElementById("bodies");
+			var p = bodies.getElementsByTagName("p")[0];
+			var i = 0;
+				setInterval(updateNum, 1000);
+					updateNum();
+			function updateNum(){
+				p.innerHTML = ++i	
+			}
+
+		//judgement
+		var input = document.getElementById("judgement").getElementsByTagName("input");
+			/*input[1].onclick = function (){
+				if(input[0].value.length==2){
+					alert("确实是两位哦")
+				}else if(input[0].value==""){
+					alert("可不能为空哦");
+				}else{
+					alert("这是"+input[0].value.length+"位数");
+				}
+			}*/
+		//先正则验证不能为出数字以外的任何
+			var i = 0;
+			input[0].onkeyup = function (){
+				this.value = this.value.replace(/[^\d]/,"")
+			}
+			//三目中的三目判断位数
+			input[1].onclick = function (){
+				(input[0].value == "") ?
+				alert("请输入数字！") :
+				alert(/^\d{2}$/.test(parseInt(input[0].value)) ? "√ 是两位数" : "这是" + input[0].value.length + "位数");
+			}
+
+	</script>
+</body>
+</html>
