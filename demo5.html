@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo5</title>
+	<style>
+		*{
+			font-family: "Microsoft Yahei";
+		}
+		#clock{
+			width:400px;
+			text-align:center;
+			background:#eb7924;
+			margin:10px auto;
+			padding:20px 0;
+			color:#fff;
+			font-size:20px;
+		}
+		span{
+			color:#334fc4;
+			display:inline-block;
+			width:30px;
+			height:30px;
+			line-height:30px;
+			background:#fbfbfb;
+			border:2px solid #b4b4b4;
+			margin:0 10px;
+			padding:0 10px;
+		}
+		#box{
+			position:absolute;
+			left:50%;
+			color:#fff;
+			width:200px;
+			height:200px;
+			background:violet;
+			cursor:pointer;
+			letter-spacing:5px;
+			text-align:center;
+			font:20px/200px Arial;
+			font-weight:800;
+		}
+		#style{
+			position:absolute;
+			left:30%;
+			top:40%;
+			width:500px;
+			padding:10px;
+			border:4px solid orange;
+			background:wheat;
+		}
+		#style b{
+			display:block;
+			width:130px;
+			border:1px solid #000;
+			margin:10px;
+			text-align:center;
+			padding:5px;
+			color:cadetblue;
+		}
+		</style>
+</head>
+<body>
+	<div id="clock">
+		<span></span>点<span></span>分<span></span>秒
+	</div>
+
+	<div id="box">点击我就闪</div>
+	<div id="style">
+		<b>Get style</b>
+		<b>Set style</b>
+		<b>Default style</b>
+	</div>
+	<script>
+		//时钟
+		var clock = document.getElementById("clock");
+		var spans = clock.getElementsByTagName("span");
+		
+		setInterval(getTimes,1000)
+		getTimes();
+
+		function getTimes (){
+			var date = new Date();
+			var dates = [date.getHours(),date.getMinutes(),date.getSeconds()];
+			for (var i=0;i<dates.length;i++){
+				spans[i].innerHTML = add(dates[i])
+			}
+			function add(a){
+				return a.toString().replace(/^(\d)$/, "0$1")	
+			}
+//			add();
+
+		}
+		
+		//闪
+		var box = document.getElementById("box");
+		var timer = null;		
+	
+			box.onclick = function (){			
+				var i = 0;	
+				clearInterval(timer);
+			timer = setInterval(function () {
+				box.style.display = i++ % 2 ? "none" : "block";
+				i > 6 && (clearInterval(timer))
+			}, 80)
+		}
+	
+		//style
+			function css(obj, attr, value){
+			switch (arguments.length){
+				case 2:
+					if(typeof arguments[1] == "object"){	//二个参数, 如果第二个参数是对象, 批量设置属性
+						for (var i in attr)obj.style[i] = attr[i]
+					}else{	//二个参数, 如果第二个参数是字符串, 读取属性值
+						return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr]
+					}
+				break;
+				case 3:
+			//三个参数, 单一设置属性
+				obj.style[attr] = value;
+				break;
+			default:
+			alert("参数错误！")
+			}
+		}
+
+			
+			var styles = document.getElementById("style");
+			var bs = styles.getElementsByTagName("b");
+			
+			bs[0].onclick = function (){
+				alert("width:"+css(styles,"width")+"\nheight: " + css(styles, "height") + "\nbackground-color: " + css(styles, "backgroundColor"))
+			}
+			bs[1].onclick = function(){
+				css(styles, {width: "200px", height: "200px", borderColor: "#ff6200", backgroundColor: "#eff8ff"});
+		//三个参数, 属性单一设置
+			for (i = 0; i < bs.length; i++) css(bs[i], "backgroundColor", "#a7ff00")
+
+			}
+			bs[2].onclick = function(){
+				//两个参数, 第二个参数为对象, 属性批量设置
+			css(styles, {width: "500px", height: "139px", borderColor: "orange", backgroundColor: "wheat"});
+		//三个参数, 属性单一设置
+			for (i = 0; i < bs.length; i++) {
+				css(bs[i], "backgroundColor", "")
+				}
+			}
+	</script>
+</body>
+</html>
