@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤模块</title>
+</head>
+<body>
+	<div class="app" ng-controller="ctrl">
+		
+		<input type="text" name="" id="" ng-model="int">
+		<p ng-repeat="i in names | filter:int">{{i.name}}今年{{i.age}}岁了</p>
+	</div>
+	<script src="js/angular.js"></script>
+	<script>
+		var app = angular.module("app",[]);
+		app.controller("ctrl",function($scope){
+			$scope.names=[
+				{name:'Henry',age:20},
+				{name:'Allen',age:32},
+				{name:'Julia',age:29}
+			]
+		})
+	</script>
+</body>
+</html>
