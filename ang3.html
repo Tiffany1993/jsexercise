@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤练习</title>
+	<style>
+		input{
+			margin-top:20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="app">
+		<input type="text" name="" id="" ng-model="min">
+		<p>{{min | currency}}</p>
+		<input type="text" name="" id="" ng-model="low"><br>
+		<div>{{low | lowercase}}</div>
+		<input type="text" name="" id="" ng-model="up">
+		<p>{{ up | uppercase}}</p>
+	</div>
+	<script src="js/angular.js"></script>
+	<script>
+		var app = angular.module("app",[]);
+
+	</script>
+</body>
+</html>
