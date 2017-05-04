@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pra1</title>
+</head>
+<body>
+	<script>
+//		//使用js在页面上循环输出1-100的奇数
+		function getOddNumber(){
+			for(var i=0;i<length;i++){
+				if(i%2==1){
+					document.write(i);
+				}
+			}
+		}
+//		//编写js函数，用于计算a+(a-1)+(a-2)+……+1的和
+		function sum1(a){
+			var sum = a;
+		for(var i=a;i>=1;i--){
+			sum+=(i-1);
+		}
+			return sum;
+		}
+		alert(sum1(3));
+		
+		//substr、substring、slice区别
+		var str = "hello world";
+		console.log(str.substr(3,2));
+		console.log(str.substring(3,5));
+		console.log(str.slice(3));
+		
+		//获得参数后缀名
+		function getSuffix(filename){
+			var dotLast = filename.lastIndexOf(".");
+			if(doLast==-1){
+				return "文件格式名不正确"
+			}else{
+				return filename.substr(dotLast);
+			}
+		}
+		alert(getSuffix("a.jepg"));
+	</script>
+</body>
+</html>
