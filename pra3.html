@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pra3</title>
+</head>
+<body>
+	<input type="text" name="" id="sec" placeholder="请输入秒数">
+	<button id="show">确定</button>
+		<div id="secshow"></div>
+	<script>
+		//5的倍数
+		function sum(end){
+			for(var i=0;i<end;i++){
+				if(i%5==0){
+					console.log(i);
+				}
+			}
+		}
+		
+//		function sum(end){
+//			for(var i=5;i<end;i+=5){
+//				console.log(i);
+//			}
+//		}
+		
+		//二维数组所有的和
+		function sum(arr){
+			var total = 0;
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<arr[i].length;j++){
+					total+=arr[i][j]
+				}
+			}
+		}
+		var show = document.getElementById("show");
+		var sec = document.getElementById("sec");
+		var secshow = document.getElementById("secshow");
+		show.onclick = function(){
+			var secT = parseInt(sec.value);
+			alert(secT);
+			var secT = parseInt(sec.value);
+			var time = setInterval(function(){
+				if(secT=0){
+					secshow.innerHTML = secT--;
+				}else{
+					clearInterval(time);
+				}
+			},1000)
+		}
+		
+	</script>
+</body>
+</html>
