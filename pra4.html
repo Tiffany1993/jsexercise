@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pra4</title>
+</head>
+<body>
+	<script>
+		//去重
+		var arr1 =[1,2,2,2,3,3,3,4,5,6],
+    		arr2 = [];
+		for(var i = 0,len = arr1.length; i< len; i++){
+    		if(arr2.indexOf(arr1[i]) < 0){
+        		arr2.push(arr1[i]);
+    		}
+		}
+		console.log(arr2);
+		//javascript数据类型
+		function clone(obj) {
+    var o;
+    switch (typeof obj) {
+        case "undefined":
+            break;
+        case "string":
+            o = obj + "";
+            break;
+        case "number":
+            o = obj - 0;
+            break;
+        case "boolean":
+            o = obj;
+            break;
+        case "object": // object 分为两种情况 对象（Object）或数组（Array）
+            if (obj === null) {
+                o = null;
+            } else {
+                if (Object.prototype.toString.call(obj).slice(8, -1) === "Array") {
+                    o = [];
+                    for (var i = 0; i < obj.length; i++) {
+                        o.push(clone(obj[i]));
+                    }
+                } else {
+                    o = {};
+                    for (var k in obj) {
+                        o[k] = clone(obj[k]);
+                    }
+                }
+            }
+            break;
+        default:
+            o = obj;
+            break;
+    }
+    return o;
+}
+		//统计
+		
+	var str = "aaaabbbccccddfgh";
+	var obj  = {};
+		for(var i=0;i<str.length;i++){
+    	var v = str.charAt(i);
+    	if(obj[v] && obj[v].value == v){
+        	obj[v].count = ++ obj[v].count;
+    	}else{
+        	obj[v] = {};
+        	obj[v].count = 1;
+        	obj[v].value = v;
+    	}
+	}
+for(key in obj){
+    document.write(obj[key].value +'='+obj[key].count+'&nbsp;'); // a=4  b=3  c=4  d=2  f=1  g=1  h=1 
+}  
+	</script>
+</body>
+</html>
